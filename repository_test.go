@@ -28,7 +28,7 @@ func Test_Add(t *testing.T) {
   
   repo.Add(rabbit)
   
-  expect(t, repo.rabbits[rabbit.name], rabbit)
+  expect(t, repo.rabbits[rabbit.Name], rabbit)
 }
 
 func Test_Get(t *testing.T) {
@@ -38,8 +38,8 @@ func Test_Get(t *testing.T) {
   repo.Add(firstRabbit)
   repo.Add(secondRabbit)
   
-  firstResult := repo.Get(firstRabbit.name)
-  secondResult := repo.Get(secondRabbit.name)
+  firstResult := repo.Get(firstRabbit.Name)
+  secondResult := repo.Get(secondRabbit.Name)
   
   expect(t, firstResult, firstRabbit)
   expect(t, secondResult, secondRabbit)

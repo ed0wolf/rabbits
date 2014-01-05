@@ -1,11 +1,5 @@
 package rabbits
 
-type Rabbit struct {
-	name string
-	desc string
-	imgUrl string
-}
-
 type Repository struct {
   rabbits map[string]Rabbit
 }
@@ -15,7 +9,7 @@ func NewRepo() *Repository {
 }
 
 func (repo *Repository) Add(rabbit Rabbit) {
-  repo.rabbits[rabbit.name] = rabbit
+  repo.rabbits[rabbit.Name] = rabbit
 }
 
 func (repo *Repository) Get(name string) Rabbit {
