@@ -15,8 +15,9 @@ func (repo *Repository) Add(rabbit Rabbit) {
   repo.rabbits[key] = rabbit
 }
 
-func (repo *Repository) Get(name string) Rabbit {
-  return repo.rabbits[strings.ToLower(name)]
+func (repo *Repository) Get(name string) (Rabbit, bool) {
+  rabbit, ok := repo.rabbits[strings.ToLower(name)]
+  return rabbit, ok
 }
 
 func (repo *Repository) GetAll() []Rabbit {

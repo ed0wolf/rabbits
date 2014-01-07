@@ -38,11 +38,15 @@ func Test_Get(t *testing.T) {
   repo.Add(firstRabbit)
   repo.Add(secondRabbit)
   
-  firstResult := repo.Get(firstRabbit.Name)
-  secondResult := repo.Get(secondRabbit.Name)
-  
+  firstResult, ok := repo.Get(firstRabbit.Name)
   expect(t, firstResult, firstRabbit)
+  expect(t, ok, true)
+  
+  secondResult, ok := repo.Get(secondRabbit.Name) 
   expect(t, secondResult, secondRabbit)
+  
+  _, ok = repo.Get("none existant") 
+  expect(t, ok, false)
 }
 
 func Test_Get_wrongCase(t *testing.T) {
@@ -50,9 +54,10 @@ func Test_Get_wrongCase(t *testing.T) {
   repo := NewRepo()  
   repo.Add(rabbit)
   
-  result := repo.Get("ed")
+  result, ok := repo.Get("ed")
   
   expect(t, result, rabbit)
+  expect(t, ok, true)
 }
 
 func Test_GetAll(t *testing.T) {
