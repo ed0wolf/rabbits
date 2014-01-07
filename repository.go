@@ -1,5 +1,7 @@
 package rabbits
 
+import "strings"
+
 type Repository struct {
   rabbits map[string]Rabbit
 }
@@ -9,11 +11,12 @@ func NewRepo() *Repository {
 }
 
 func (repo *Repository) Add(rabbit Rabbit) {
-  repo.rabbits[rabbit.Name] = rabbit
+  key := strings.ToLower(rabbit.Name)
+  repo.rabbits[key] = rabbit
 }
 
 func (repo *Repository) Get(name string) Rabbit {
-  return repo.rabbits[name]
+  return repo.rabbits[strings.ToLower(name)]
 }
 
 func (repo *Repository) GetAll() []Rabbit {

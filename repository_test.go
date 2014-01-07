@@ -23,7 +23,7 @@ func Test_NewRepo(t *testing.T) {
 }
 
 func Test_Add(t *testing.T) {
-  rabbit := Rabbit{"Ed", "Big bad rabbit", "http://google.com"}
+  rabbit := Rabbit{"ed", "Big bad rabbit", "http://google.com"}
   repo := NewRepo()
   
   repo.Add(rabbit)
@@ -43,6 +43,16 @@ func Test_Get(t *testing.T) {
   
   expect(t, firstResult, firstRabbit)
   expect(t, secondResult, secondRabbit)
+}
+
+func Test_Get_wrongCase(t *testing.T) {
+  rabbit := Rabbit{"ED", "Big bad rabbit", "http://google.com"}
+  repo := NewRepo()  
+  repo.Add(rabbit)
+  
+  result := repo.Get("ed")
+  
+  expect(t, result, rabbit)
 }
 
 func Test_GetAll(t *testing.T) {
